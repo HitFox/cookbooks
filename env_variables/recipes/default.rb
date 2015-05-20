@@ -8,6 +8,7 @@ node[:deploy].each do |app_name, deploy|
   end
   
   link ::File.join(deploy[:deploy_to], 'shared', 'app.env') do
+    manage_symlink_source true
     to ::File.join(deploy[:deploy_to], 'current', 'app.env')
   end
 end
