@@ -7,8 +7,8 @@ node[:deploy].each do |app_name, deploy|
     environment_variables deploy[:environment_variables]
   end
   
-  link ::File.join(deploy[:deploy_to], 'shared', 'app.env') do
-    to ::File.join(deploy[:deploy_to], 'current', 'app.env')
-    link_type :symbolic
-  end
+  # link ::File.join(deploy[:deploy_to], 'shared', 'app.env') do
+  #   to ::File.join(deploy[:deploy_to], 'current', 'app.env')
+  #   link_type :symbolic
+  # end
 end
