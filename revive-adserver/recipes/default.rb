@@ -2,19 +2,15 @@
 node[:deploy].each do |application, deploy|
 
 	if application == "revive_adserver"
-		directory "#{deploy[:deploy_to]}/releases/*/var" do
-	  	owner 'root'
-	  	group 'root'
-			owner deploy[:user]
+		bash 'change permissions' do
+		  user deploy[:user]
 			group deploy[:group]
-	  	mode '0777'
-			recursive true
+		  cwd "#{deploy[:deploy_to]}/current"
+		  code <<-EOH
+			chmod -R a+w var
+			chmod -R a+w var/cache
+		  EOH
 		end
 	end
-
+	
 end
-
-# apt-get install unzip
-# wget http://download.revive-adserver.com/revive-adserver-3.2.1.zip
-# unzip -o revive-adserver-3.2.1.zip
-# ls -lath .
