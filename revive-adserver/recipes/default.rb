@@ -8,7 +8,10 @@ node[:deploy].each do |application, deploy|
 		  cwd "#{deploy[:deploy_to]}/current"
 		  code <<-EOH
 			chmod -R a+w var
+			mkdir -p var/templates_compiled
+			chmod -R a+w var/templates_compiled
 			chmod -R a+w plugins
+			mkdir -p www/admin/plugins
 			chmod -R a+w www/admin/plugins
 		  EOH
 		end
