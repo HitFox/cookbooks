@@ -9,8 +9,12 @@ node[:deploy].each do |application, deploy|
 		  code <<-EOH
 			chmod -R a+w var
 			chmod -R a+w var/cache
+			chmod -R a+w var/templates_compiled
+			chmod -R a+w plugins
+			chmod -R a+w www/admin/plugins
+			chmod -R a+w www/images
 		  EOH
 		end
 	end
-	
+
 end
