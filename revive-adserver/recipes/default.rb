@@ -8,6 +8,7 @@ node[:deploy].each do |application, deploy|
 			owner deploy[:user]
 			group deploy[:group]
 	  	mode '0777'
+			recursive true
 		end
 	end
 
