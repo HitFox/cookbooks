@@ -2,7 +2,7 @@
 node[:deploy].each do |application, deploy|
 
 	if application == "revive_adserver"
-		directory "#{deploy[:deploy_to]}/current/var" do
+		directory "#{deploy[:deploy_to]}/releases/*/var" do
 	  	owner 'root'
 	  	group 'root'
 			owner deploy[:user]
