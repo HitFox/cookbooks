@@ -1,14 +1,7 @@
 
-include_recipe 'deploy'
-
-puts "XXXXX"
-puts deploy[:deploy_to]
-
-bash 'install_adserver' do
-  user 'root'
-  cwd '/tmp'
-  code <<-EOH
-  EOH
+node[:deploy].each do |application, deploy|
+	puts "#{deploy[:deploy_to]}"
+	puts application
 end
 
 # apt-get install unzip
