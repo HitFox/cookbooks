@@ -9,7 +9,7 @@ node[:deploy].each do |application, deploy|
 		  code <<-EOH
 			chmod -R a+w var
 			chmod -R a+w plugins
-			chmod -R a+w www
+			chmod -R a+w www/admin/plugins
 		  EOH
 		end
 	end
