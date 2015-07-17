@@ -1,0 +1,10 @@
+maintainer        'Michael Rüffer'
+maintainer_email  'mr@hitfoxgroup.com'
+license           'Apache 2.0'
+description       'Installs and configures monit for delayed job'
+long_description  ''
+version           '0.1'
+recipe            'delayed_job::configure', 'configure monitrc'
+recipe            'delayed_job::restart', 'restart delayed_job'
+
+supports 'ubuntu'
