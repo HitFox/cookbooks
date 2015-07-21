@@ -2,8 +2,8 @@
   <% node[:delayed_job][deploy[:rails_env].to_sym][:workers_count].times do |count| %>
     check process delayed_job.<%= count %>
       with pidfile /srv/www/<%= application %>/shared/pids/delayed_job.<%= count %>.pid
-      start program = "/bin/su - <%= deploy[:user] %> -c 'cd /srv/www/<%= application %>/current/; RAILS_ENV=<%= deploy[:rails_env] %> bin/delayed_job -i <%= count %> start'" with timeout 120 seconds
-      stop program = "/bin/su - <%= deploy[:user] %> -c 'cd /srv/www/<%= application %>/current/; RAILS_ENV=<%= deploy[:rails_env] %> bin/delayed_job -i <%= count %> stop'" with timeout 120 seconds
+      start program = "/bin/su - <%= deploy[:user] %> -c 'cd /srv/www/<%= application %>/current/; source app.env; RAILS_ENV=<%= deploy[:rails_env] %> bin/delayed_job -i <%= count %> start'" with timeout 120 seconds
+      stop program = "/bin/su - <%= deploy[:user] %> -c 'cd /srv/www/<%= application %>/current/; source app.env; RAILS_ENV=<%= deploy[:rails_env] %> bin/delayed_job -i <%= count %> stop'" with timeout 120 seconds
       # OpsWorks wrong value for env: <%= deploy[:rails_env] %>
       if cpu > 40% for 2 cycles then alert
       if cpu > 80% for 5 cycles then restart
