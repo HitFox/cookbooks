@@ -5,7 +5,7 @@ include_recipe "deploy"
 node[:deploy].each do |application, deploy|  
   
   Chef::Log.info('############################')
-  Chef::Log.info(node[:delayed_job][deploy[:rails_env].to_sym].inspect)
+  Chef::Log.info(node[:delayed_job][deploy[:rails_env].to_sym][:workers_count].inspect)
   Chef::Log.info('############################')
   
   template "/etc/monit/conf.d/delayed_job.monitrc" do

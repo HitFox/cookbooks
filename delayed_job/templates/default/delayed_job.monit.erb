@@ -1,7 +1,5 @@
 <% node[:deploy].each do |application, deploy| %>
-  <% node[:delayed_job]
-    [deploy[:rails_env].to_sym]
-    [:workers_count].times do |count| %>
+  <% node[:delayed_job][deploy[:rails_env].to_sym][:workers_count].times do |count| %>
     check process delayed_job.<%= count %>
       with pidfile /srv/www/<%= application %>/shared/pids/delayed_job.<%= count %>.pid
       start program = "/bin/su - <%= deploy[:user] %> -c 'cd /srv/www/<%= application %>/current/; RAILS_ENV=<%= application[:env] %> script/delayed_job -i <%= count %> start'" with timeout 120 seconds
