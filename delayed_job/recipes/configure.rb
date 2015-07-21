@@ -1,5 +1,9 @@
 include_recipe "deploy"
 
+Chef::Log.info('############################')
+Chef::Log.info(node[:delayed_job].inspect)
+Chef::Log.info('############################')
+
 node[:deploy].each do |application, deploy|  
   template "/etc/monit/conf.d/delayed_job.monitrc" do
     source "delayed_job.monit.erb"
