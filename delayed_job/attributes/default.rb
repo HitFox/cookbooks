@@ -1,5 +1,5 @@
 default[:delayed_job] = {
-  :stagingapp => { :env => "staging", :workers_count => 1 },
-  :productionapp => { :env => "production", :workers_count => 3 },
+  :staging => { :env => "staging", :workers_count => 1 },
+  :production => { :env => "production", :workers_count => 3 },
 }
 
