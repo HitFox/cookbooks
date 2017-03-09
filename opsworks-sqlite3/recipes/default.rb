@@ -9,8 +9,8 @@
 node[:deploy].each do |application, deploy|
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
     source "database.yml.erb"
-    user "deploy"
-    group "nginx"
+    group deploy[:group]
+    owner deploy[:user]
     mode 0755
   end
 end
