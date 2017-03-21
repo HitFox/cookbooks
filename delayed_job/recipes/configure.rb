@@ -1,7 +1,7 @@
 include_recipe "deploy"
 
 node[:deploy].each do |application, deploy|  
-  template "/etc/monit/conf.d/delayed_job.monitrc" do
+  template "/etc/monit.d/delayed_job.monitrc" do
     source "delayed_job.monit.erb"
     group deploy[:group]
     owner deploy[:user]
